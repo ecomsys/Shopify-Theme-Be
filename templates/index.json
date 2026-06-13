@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "home_slider_m7R7h4": {
+      "type": "home-slider",
+      "blocks": {
+        "slide_JcrEFF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide-1_67c98d6a-c9bd-49e9-bd1f-b5f3f1eab95e.png",
+            "link": ""
+          }
+        },
+        "slide_g8KRm6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide.png",
+            "link": ""
+          }
+        },
+        "slide_DGTDx6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide-1.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_JcrEFF",
+        "slide_g8KRm6",
+        "slide_DGTDx6"
+      ],
+      "name": "WEBLEGKO Home cлайдер",
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "featured-products",
+        "products_to_show": 100,
+        "title": "Popular products",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-cf7fd482-90ae-4056-9bb5-449dff371638",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "home_slider_m7R7h4",
+    "featured_collection"
+  ]
+}
