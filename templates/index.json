@@ -9,41 +9,9 @@
  */
 {
   "sections": {
-    "home_slider_m7R7h4": {
-      "type": "home-slider",
-      "blocks": {
-        "slide_JcrEFF": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/home-slide-1_67c98d6a-c9bd-49e9-bd1f-b5f3f1eab95e.png",
-            "link": ""
-          }
-        },
-        "slide_g8KRm6": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/home-slide.png",
-            "link": ""
-          }
-        },
-        "slide_DGTDx6": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/home-slide-1.png",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_JcrEFF",
-        "slide_g8KRm6",
-        "slide_DGTDx6"
-      ],
-      "name": "WEBLEGKO Home cлайдер",
-      "settings": {}
-    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "featured-products",
         "products_to_show": 100,
@@ -69,10 +37,103 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "home_slider_b4F4AP": {
+      "type": "home-slider",
+      "blocks": {
+        "slide_YfxdrW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide-1_67c98d6a-c9bd-49e9-bd1f-b5f3f1eab95e.png",
+            "link": ""
+          }
+        },
+        "slide_CrCHaz": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_YfxdrW",
+        "slide_CrCHaz"
+      ],
+      "name": "BERGNZ Slider",
+      "settings": {}
+    },
+    "faq_BHiqfe": {
+      "type": "faq",
+      "blocks": {
+        "question_XdLrDy": {
+          "type": "question",
+          "settings": {
+            "question": "Love what I have from you of Dr. Berg",
+            "answer": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>"
+          }
+        },
+        "question_QkGAMT": {
+          "type": "question",
+          "settings": {
+            "question": "Love what I have from you of Dr. Berg",
+            "answer": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>"
+          }
+        },
+        "question_WXXMPm": {
+          "type": "question",
+          "settings": {
+            "question": "Appreciate the insights shared by Dr. Berg",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        },
+        "question_YmRj6i": {
+          "type": "question",
+          "settings": {
+            "question": "Enjoying Dr. Berg's approach to healthy living",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        },
+        "question_MRrBTx": {
+          "type": "question",
+          "settings": {
+            "question": "Grateful for Dr. Berg's wellness guidance",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        },
+        "question_TWtYdn": {
+          "type": "question",
+          "settings": {
+            "question": "Inspired by Dr. Berg's nutritional advice",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        },
+        "question_CHzW9p": {
+          "type": "question",
+          "settings": {
+            "question": "Finding value in Dr. Berg's health tips",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_XdLrDy",
+        "question_QkGAMT",
+        "question_WXXMPm",
+        "question_YmRj6i",
+        "question_MRrBTx",
+        "question_TWtYdn",
+        "question_CHzW9p"
+      ],
+      "name": "BERGNZ FAQ",
+      "settings": {
+        "heading": "FAQ"
+      }
     }
   },
   "order": [
-    "home_slider_m7R7h4",
-    "featured_collection"
+    "featured_collection",
+    "home_slider_b4F4AP",
+    "faq_BHiqfe"
   ]
 }

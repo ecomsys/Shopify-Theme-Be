@@ -1,0 +1,127 @@
+<!-- sections/custom-faq.liquid -->
+
+{%- style -%}
+  /* Убираем стандартный треугольник в Safari/Chrome для details */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+{%- endstyle -%}
+
+<section class="tw:bg-white tw:text-grayscale-950">
+  <div class="tw:max-w-[80rem] tw:mx-auto tw:px-[1.6rem] tw:py-16">
+    
+    <!-- Заголовок секции -->
+    {%- if section.settings.heading != blank -%}
+      <div class="tw:text-center tw:mb-12">
+        <h2 class="tw:text-[3rem] tw:font-bold tw:tracking-tight">{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <!-- рейтинг по отзывам-->
+    {%- if section.settings.rating != blank -%}
+      <div class="tw:text-center tw:mb-12">
+        <div class="tw:text-[1.2rem] tw:tracking-tight">{{ section.settings.rating }}</div>
+      </div>
+    {%- endif -%}
+
+    <!-- Список вопросов -->
+    <div class="tw:flex tw:flex-col">
+      {%- for block in section.blocks -%}
+        <!-- 
+          tw:group - нужно, чтобы управлять состоянием детей при открытии
+          Атрибут [open] работает автоматически в HTML
+        -->
+        <details class="tw:group tw:border-b tw:border-gray-200" {{ block.shopify_attributes }}>
+          
+          <!-- Заголовок вопроса (кликабельная область) -->
+          <summary class="tw:flex tw:justify-between tw:items-center tw:py-6 tw:cursor-pointer tw:list-none tw:hover:bg-gray-50 tw:px-2 tw:transition-colors">
+            
+            <span class="tw:text-[1.6rem] tw:font-medium tw:pr-8">
+              {{ block.settings.question }}
+            </span>
+
+            <!-- Контейнер для иконок + и - -->
+            <span class="tw:relative tw:w-[2.4rem] tw:h-[2.4rem] tw:flex-shrink-0 tw:flex tw:items-center tw:justify-center">
+              
+              <!-- Иконка ПЛЮС (видна по умолчанию, скрывается при open) -->
+              <svg class="tw:absolute tw:w-full tw:h-full tw:text-gray-500 tw:group-open:tw-hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+              </svg>
+
+              <!-- Иконка МИНУС (скрыта по умолчанию, появляется при open) -->
+              <svg class="tw:absolute tw:w-full tw:h-full tw:text-gray-500 tw:hidden tw:group-open:tw:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path>
+              </svg>
+
+            </span>
+          </summary>
+
+          <!-- Текст ответа -->
+          <div class="tw:pb-8 tw:text-[1.4rem] tw:text-gray-600 tw:leading-relaxed tw:px-2 tw:pr-[4.8rem]">
+            {{ block.settings.answer }}
+          </div>
+
+        </details>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BERGNZ FAQ",
+  "tag": "section",
+  "class": "section-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "FAQ",
+      "label": "Heading"
+    },
+     {
+      "type": "text",
+      "id": "rating",
+      "default": "Rated 4.8/5 based on 2,847 reviews",
+      "label": "Rating based reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "default": "Love what I have from you of Dr. Berg",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "default": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BERGNZ FAQ",
+      "blocks": [
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

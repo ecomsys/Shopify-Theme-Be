@@ -1,18 +1,18 @@
 <!-- sections/home-slider.liquid -->
-<section class="relative w-full h-50 md:h-165  bg-gray-100 overflow-hidden">
+<section class="tw:relative tw:max-w-[144rem] tw:mx-auto tw:w-full tw:h-[20rem] tw:md:h-[26rem] tw:bg-gray-100 tw:overflow-hidden">
   
   <!-- Главный контейнер Swiper -->
-  <div class="swiper myProductSwiper w-full h-full">
+  <div class="swiper myProductSwiper tw:w-full tw:h-full">
     <div class="swiper-wrapper">
       
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
           
           <!-- ОДИН СЛАЙД -->
-          <div class="swiper-slide relative h-full" {{ block.shopify_attributes }}>
+          <div class="swiper-slide tw:relative tw:h-full" {{ block.shopify_attributes }}>
             
             {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}" class="block w-full h-full group">
+              <a href="{{ block.settings.link }}" class="tw:block tw:w-full tw:h-full tw:group">
             {% endif %}
 
               <!-- Картинка -->
@@ -21,13 +21,13 @@
                   block.settings.image 
                   | image_url: width: 1200 
                   | image_tag: 
-                      class: 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105',
+                      class: 'tw:w-full tw:h-full tw:object-cover tw:transition-transform tw:duration-500 tw:group-hover:scale-105',
                       loading: 'lazy',
                       widths: '600, 900, 1200',
                       alt: 'Промо слайд'
                 }}
               {% else %}
-                {{ 'lifestyle-2' | placeholder_svg_tag: 'w-full h-full object-cover opacity-50' }}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'tw:w-full tw:h-full tw:object-cover tw:opacity-50' }}
               {% endif %}
 
             {% if block.settings.link != blank %}
@@ -37,7 +37,7 @@
           </div>
         {% endfor %}
       {% else %}
-        <div class="swiper-slide flex items-center justify-center bg-gray-200 text-gray-500 font-inter">
+        <div class="swiper-slide tw:flex tw:items-center tw:justify-center tw:bg-gray-200 tw:text-gray-500 tw:font-inter">
           Добавьте слайды в настройках секции
         </div>
       {% endif %}
@@ -45,18 +45,15 @@
     </div>
     
     <!-- СТРЕЛКА ВЛЕВО (Chevron Left) -->
-    <!-- top-1/2 -translate-y-1/2 = строго по центру высоты -->
-    <!-- left-8 = ровно 2rem (3.2rem) от левого края -->
-    <button class="home-button-prev absolute left-8 top-1/2 -translate-y-1/2 z-10 w-16 h-16 flex items-center justify-center text-white hover:bg-black/10 rounded-full transition-all" aria-label="Предыдущий слайд">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <button class="home-button-prev tw:absolute tw:left-2 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-[4.5rem] tw:h-[4.5rem] tw:flex tw:items-center tw:justify-center tw:text-white tw:hover:bg-black/10 tw:rounded-full tw:transition-all" aria-label="Предыдущий слайд">
+      <svg class="tw:w-[3.2rem] tw:h-[3.2rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
       </svg>
     </button>
 
     <!-- СТРЕЛКА ВПРАВО (Chevron Right) -->
-    <!-- right-8 = ровно 2rem (3.2rem) от правого края -->
-    <button class="home-button-next absolute right-8 top-1/2 -translate-y-1/2 z-10 w-16 h-16 flex items-center justify-center text-white hover:bg-black/10 rounded-full transition-all" aria-label="Следующий слайд">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <button class="home-button-next tw:absolute tw:right-2 tw:top-1/2 tw:-translate-y-1/2 tw:z-10 tw:w-[4.5rem] tw:h-[4.5rem] tw:flex tw:items-center tw:justify-center tw:text-white tw:hover:bg-black/10 tw:rounded-full tw:transition-all" aria-label="Следующий слайд">
+      <svg class="tw:w-[3.2rem] tw:h-[3.2rem]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
       </svg>
     </button>
@@ -93,7 +90,7 @@
 
 {% schema %}
 {
-  "name": "WEBLEGKO Home cлайдер",
+  "name": "BERGNZ Slider",
   "class": "section-home-slider",
   "settings": [],
   "blocks": [
@@ -116,11 +113,9 @@
   ],
   "presets": [
     {
-      "name": "WEBLEGKO Home cлайдер",
+      "name": "BERGNZ Slider",
       "blocks": [
-        { "type": "slide" },
-        { "type": "slide" },
-        { "type": "slide" }
+        { "type": "slide" }        
       ]
     }
   ]

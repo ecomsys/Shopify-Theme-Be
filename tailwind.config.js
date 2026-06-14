@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  prefix: "tw",
   content: [
     "./src/**/*.{js,ts,jsx,tsx,liquid}",
     "./layout/**/*.liquid",
@@ -8,10 +9,19 @@ export default {
     "./templates/**/*.liquid",
     "./assets/**/*.js",
   ],
-  theme: {   
+  theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         white: "#fff",
+        golden: "#ffc356",
+        goluboy: "#00b5d1",
         // Grayscale (используется для gray-* классов)
         grayscale: {
           25: "#f8f9f9",

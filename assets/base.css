@@ -716,10 +716,12 @@ summary::-webkit-details-marker {
 }
 
 *:focus-visible {
-  outline: var(--focused-base-outline);
-  outline-offset: var(--focused-base-outline-offset);
-  box-shadow: var(--focused-base-box-shadow);
-}
+  /* outline: var(--focused-base-outline); */
+  /* outline-offset: var(--focused-base-outline-offset); */
+  /* box-shadow: var(--focused-base-box-shadow); */
+  outline: 0.0625rem rgb(211, 211, 211) solid;
+
+} 
 
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
 .focused {
