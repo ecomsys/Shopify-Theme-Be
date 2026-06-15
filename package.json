@@ -10,10 +10,7 @@
     "dev": "concurrently \"npm run watch\" \"npm run shop\" \"npm run open-browser\"",
     "fonts": "node .scripts/fonts.js",
     "svg": "node .scripts/svg.js",
-    "webp": "node .scripts/webp.js",
-    "rename": "node rename-dawn-classes.js",
-    "convert:rem": "node .scripts/convert-rem.js --toRem",
-    "convert:px": "node .scripts/convert-rem.js --toPx"
+    "webp": "node .scripts/webp.js"    
   },
   "keywords": [],
   "author": "weblegko",
