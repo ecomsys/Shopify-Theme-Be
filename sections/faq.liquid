@@ -1,55 +1,53 @@
 <!-- sections/custom-faq.liquid -->
 
 {%- style -%}
-  /* Убираем стандартный треугольник в Safari/Chrome для details */
-  summary::-webkit-details-marker {
-    display: none;
-  }
+  /* Убираем стандартный треугольник браузера */
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+
+  /* МАГИЯ ПЕРЕКЛЮЧЕНИЯ + и - */
+  /* Когда details открыт, скрываем плюс и показываем минус */
+  details[open] summary .faq-icon-plus { opacity: 0; }
+  details[open] summary .faq-icon-minus { opacity: 1; }
 {%- endstyle -%}
 
-<section class="tw:bg-white tw:text-grayscale-950">
-  <div class="tw:max-w-[80rem] tw:mx-auto tw:px-[1.6rem] tw:py-16">
+<!-- Слегка серый фон, чтобы белые карточки выделялись -->
+<section class="tw:bg-seriy tw:text-grayscale-950 tw:px-[1.6rem]">
+  <div class="tw:max-w-[112rem] tw:mx-auto tw:py-[6rem]">
     
     <!-- Заголовок секции -->
     {%- if section.settings.heading != blank -%}
       <div class="tw:text-center tw:mb-12">
-        <h2 class="tw:text-[3rem] tw:font-bold tw:tracking-tight">{{ section.settings.heading }}</h2>
+        <h2 class="tw:text-[4rem] tw:font-medium tw:tracking-[-0.04em] tw:leading-[1.2]">{{ section.settings.heading }}</h2>
       </div>
     {%- endif -%}
 
-    <!-- рейтинг по отзывам-->
-    {%- if section.settings.rating != blank -%}
-      <div class="tw:text-center tw:mb-12">
-        <div class="tw:text-[1.2rem] tw:tracking-tight">{{ section.settings.rating }}</div>
-      </div>
-    {%- endif -%}
-
-    <!-- Список вопросов -->
-    <div class="tw:flex tw:flex-col">
+    <!-- Контейнер для карточек -->
+    <div class="tw:flex tw:flex-col tw:gap-6">
       {%- for block in section.blocks -%}
-        <!-- 
-          tw:group - нужно, чтобы управлять состоянием детей при открытии
-          Атрибут [open] работает автоматически в HTML
-        -->
-        <details class="tw:group tw:border-b tw:border-gray-200" {{ block.shopify_attributes }}>
+        
+        <!-- КАРТОЧКА -->
+        <details class="tw:group tw:bg-white tw:rounded-xl tw:border tw:border-gray-200 tw:shadow-sm tw:overflow-hidden" {{ block.shopify_attributes }}>
           
-          <!-- Заголовок вопроса (кликабельная область) -->
-          <summary class="tw:flex tw:justify-between tw:items-center tw:py-6 tw:cursor-pointer tw:list-none tw:hover:bg-gray-50 tw:px-2 tw:transition-colors">
+          <!-- Заголовок вопроса -->
+          <summary class="tw:flex tw:justify-between tw:items-center tw:p-[2rem] tw:cursor-pointer tw:hover:bg-gray-50 tw:transition-colors">
             
-            <span class="tw:text-[1.6rem] tw:font-medium tw:pr-8">
+            <span class="tw:text-[2rem] tw:font-medium tw:pr-8 tw:leading-[1.4] tw:tracking-[-0.04em]">
               {{ block.settings.question }}
             </span>
 
-            <!-- Контейнер для иконок + и - -->
-            <span class="tw:relative tw:w-[2.4rem] tw:h-[2.4rem] tw:flex-shrink-0 tw:flex tw:items-center tw:justify-center">
+            <!-- Контейнер для иконок -->
+            <span class="tw:relative tw:w-[2.8rem] tw:h-[2.8rem] tw:flex-shrink-0 tw:flex tw:items-center tw:justify-center">
               
-              <!-- Иконка ПЛЮС (видна по умолчанию, скрывается при open) -->
-              <svg class="tw:absolute tw:w-full tw:h-full tw:text-gray-500 tw:group-open:tw-hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- Иконка ПЛЮС -->
+              <!-- Убрали tw:group-open, добавили класс faq-icon-plus -->
+              <svg class="faq-icon-plus tw:absolute tw:w-full tw:h-full tw:text-golden tw:transition-opacity tw:duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
               </svg>
 
-              <!-- Иконка МИНУС (скрыта по умолчанию, появляется при open) -->
-              <svg class="tw:absolute tw:w-full tw:h-full tw:text-gray-500 tw:hidden tw:group-open:tw:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- Иконка МИНУС -->
+              <!-- Убрали tw:group-open, добавили класс faq-icon-minus -->
+              <svg class="faq-icon-minus tw:absolute tw:w-full tw:h-full tw:text-golden tw:opacity-0 tw:transition-opacity tw:duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path>
               </svg>
 
@@ -57,7 +55,7 @@
           </summary>
 
           <!-- Текст ответа -->
-          <div class="tw:pb-8 tw:text-[1.4rem] tw:text-gray-600 tw:leading-relaxed tw:px-2 tw:pr-[4.8rem]">
+          <div class="tw:px-[2rem] tw:pb-[2rem] tw:text-[1.6rem] tw:text-[#8b867a] tw:leading-[1.5] tw:tracking-[-0.04em]">
             {{ block.settings.answer }}
           </div>
 
@@ -77,14 +75,8 @@
     {
       "type": "text",
       "id": "heading",
-      "default": "FAQ",
+      "default": "Frequently Asked Questions",
       "label": "Heading"
-    },
-     {
-      "type": "text",
-      "id": "rating",
-      "default": "Rated 4.8/5 based on 2,847 reviews",
-      "label": "Rating based reviews"
     }
   ],
   "blocks": [
@@ -95,13 +87,13 @@
         {
           "type": "text",
           "id": "question",
-          "default": "Love what I have from you of Dr. Berg",
+          "default": "What is your return policy?",
           "label": "Question"
         },
         {
           "type": "richtext",
           "id": "answer",
-          "default": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>",
+          "default": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>",
           "label": "Answer"
         }
       ]
