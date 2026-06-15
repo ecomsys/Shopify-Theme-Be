@@ -85,7 +85,7 @@ spriter.compile((error, result) => {
   console.log(`SVG спрайт сохранён в ${spritePath}`);
 
   // Копируем спрайт в snippets с расширением .liquid (уже с атрибутами)
-  const liquidSpritePath = path.join(snippetsDir, 'sprite.liquid');
+  const liquidSpritePath = path.join(snippetsDir, 'weblegko-sprite.liquid');
   fs.writeFileSync(liquidSpritePath, spriteContent);
   console.log(`SVG спрайт скопирован в ${liquidSpritePath} (как Liquid-сниппет, атрибуты добавлены)`);
 

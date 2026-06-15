@@ -72,26 +72,26 @@ if (convertedCount === 0) {
 }
 
 // --- КОПИРОВАНИЕ В ASSETS (плоско, без подпапок) ---
-console.log(chalk.cyan("\nСинхронизация с assets..."));
+// console.log(chalk.cyan("\nСинхронизация с assets..."));
 
-const allWebp = await glob(path.join(outputWebp, "*.webp").replace(/\\/g, "/"));
-let copiedCount = 0;
+// const allWebp = await glob(path.join(outputWebp, "*.webp").replace(/\\/g, "/"));
+// let copiedCount = 0;
 
-for (const webpFile of allWebp) {
-  const fileName = path.basename(webpFile);
-  const targetPath = path.join(assetsDir, fileName);
-  const exists = await fs.pathExists(targetPath);
-  if (!exists) {
-    await fs.copy(webpFile, targetPath);
-    console.log(chalk.green("COPY → "), fileName);
-    copiedCount++;
-  }
-}
+// for (const webpFile of allWebp) {
+//   const fileName = path.basename(webpFile);
+//   const targetPath = path.join(assetsDir, fileName);
+//   const exists = await fs.pathExists(targetPath);
+//   if (!exists) {
+//     await fs.copy(webpFile, targetPath);
+//     console.log(chalk.green("COPY → "), fileName);
+//     copiedCount++;
+//   }
+// }
 
-if (copiedCount === 0) {
-  console.log(chalk.yellow("Все webp уже есть в assets"));
-} else {
-  console.log(chalk.cyan(`\nСкопировано в assets: ${copiedCount}`));
-}
+// if (copiedCount === 0) {
+//   console.log(chalk.yellow("Все webp уже есть в assets"));
+// } else {
+//   console.log(chalk.cyan(`\nСкопировано в assets: ${copiedCount}`));
+// }
 
 console.log(chalk.cyan("\nГотово!"));

@@ -307,7 +307,7 @@
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     {% comment %} подключаем спрайт {% endcomment %}
-    {% render 'sprite' %}
+    {% render 'weblegko-sprite' %}
 
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
@@ -317,7 +317,7 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    <div class="tw:flex tw:flex-col tw:min-h-[100vh] tw:min-h-[100dvh] tw:min-w-[32rem]">
+    <div class="tw:bg-seriy tw:flex tw:flex-col tw:min-h-[100vh] tw:min-h-[100dvh] tw:min-w-[32rem]">
       {% sections 'header-group' %}
 
       <main id="MainContent" class="flex-1 content-for-layout focus-none" role="main" tabindex="-1">

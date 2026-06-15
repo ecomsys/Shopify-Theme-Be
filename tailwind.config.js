@@ -22,6 +22,7 @@ export default {
         white: "#fff",
         golden: "#ffc356",
         goluboy: "#00b5d1",
+        goluboydark: "#0091A8",
         seriy:"#F7F3EB",
         // Grayscale (используется для gray-* классов)
         grayscale: {
