@@ -258,6 +258,15 @@
   .tw\:mx-auto {
     margin-inline: auto;
   }
+  .tw\:my-\[0\.8rem\] {
+    margin-block: 0.8rem;
+  }
+  .tw\:mt-0\.5 {
+    margin-top: calc(var(--tw-spacing) * 0.5);
+  }
+  .tw\:mt-6 {
+    margin-top: calc(var(--tw-spacing) * 6);
+  }
   .tw\:mt-\[3rem\] {
     margin-top: 3rem;
   }
@@ -273,8 +282,14 @@
   .tw\:mb-\[1\.2rem\] {
     margin-bottom: 1.2rem;
   }
+  .tw\:mb-\[1rem\] {
+    margin-bottom: 1rem;
+  }
   .tw\:mb-\[2rem\] {
     margin-bottom: 2rem;
+  }
+  .tw\:mb-\[3rem\] {
+    margin-bottom: 3rem;
   }
   .tw\:block {
     display: block;
@@ -284,6 +299,9 @@
   }
   .tw\:hidden {
     display: none;
+  }
+  .tw\:inline-flex {
+    display: inline-flex;
   }
   .tw\:aspect-\[142\/40\] {
     aspect-ratio: 142/40;
@@ -357,17 +375,11 @@
   .tw\:max-w-5xl {
     max-width: var(--tw-container-5xl);
   }
-  .tw\:max-w-\[11\.2rem\] {
-    max-width: 11.2rem;
-  }
   .tw\:max-w-\[32rem\] {
     max-width: 32rem;
   }
   .tw\:max-w-\[40rem\] {
     max-width: 40rem;
-  }
-  .tw\:max-w-\[80rem\] {
-    max-width: 80rem;
   }
   .tw\:max-w-\[112rem\] {
     max-width: 112rem;
@@ -438,6 +450,9 @@
   }
   .tw\:items-center {
     align-items: center;
+  }
+  .tw\:items-start {
+    align-items: flex-start;
   }
   .tw\:justify-between {
     justify-content: space-between;
@@ -518,8 +533,8 @@
   .tw\:border-slate-200 {
     border-color: var(--tw-color-slate-200);
   }
-  .tw\:bg-\[\#f7f3eb\] {
-    background-color: #f7f3eb;
+  .tw\:bg-\[\#e5dccb\] {
+    background-color: #e5dccb;
   }
   .tw\:bg-black\/50 {
     background-color: var(--tw-color-black);
@@ -532,9 +547,6 @@
   }
   .tw\:bg-goluboy {
     background-color: #00b5d1;
-  }
-  .tw\:bg-gray-50 {
-    background-color: var(--tw-color-gray-50);
   }
   .tw\:bg-gray-100 {
     background-color: var(--tw-color-gray-100);
@@ -575,11 +587,8 @@
   .tw\:py-8 {
     padding-block: calc(var(--tw-spacing) * 8);
   }
-  .tw\:py-16 {
-    padding-block: calc(var(--tw-spacing) * 16);
-  }
-  .tw\:py-\[5rem\] {
-    padding-block: 5rem;
+  .tw\:py-\[0\.8rem\] {
+    padding-block: 0.8rem;
   }
   .tw\:py-\[6rem\] {
     padding-block: 6rem;

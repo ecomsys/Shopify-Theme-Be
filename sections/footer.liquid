@@ -8,9 +8,9 @@
     <div class="tw:flex tw:flex-col tw:lg:flex-row tw:gap-12 tw:lg:gap-20">
       <!-- 1.1: Подписка (Левая половина) -->
       <div class="tw:w-full tw:lg:w-1/2">
-        <div class="tw:text-[2.4rem] tw:xl:text-[4rem] tw:leading-[1.2] tw:tracking-[-0.04em] tw:font-medium tw:mb-[2rem]">
+        <h2 class="tw:text-[2.4rem] tw:xl:text-[4rem] tw:leading-[1.2] tw:tracking-[-0.04em] tw:font-medium tw:mb-[2rem]">
           {{ section.settings.newsletter_heading }}
-        </div>
+        </h2>
 
         {%- form 'customer', id: 'ContactFooter', class: 'newsletter-form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
