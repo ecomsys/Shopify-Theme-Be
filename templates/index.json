@@ -38,102 +38,115 @@
         "padding_bottom": 36
       }
     },
-    "home_slider_b4F4AP": {
-      "type": "home-slider",
+    "weblegko_home_slider_PbAceK": {
+      "type": "weblegko-home-slider",
       "blocks": {
-        "slide_YfxdrW": {
+        "slide_KfJxNB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slide-1.png",
+            "link": ""
+          }
+        },
+        "slide_iiFR4c": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/home-slide-1_67c98d6a-c9bd-49e9-bd1f-b5f3f1eab95e.png",
             "link": ""
           }
-        },
-        "slide_CrCHaz": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/home-slide.png",
-            "link": ""
-          }
         }
       },
       "block_order": [
-        "slide_YfxdrW",
-        "slide_CrCHaz"
+        "slide_KfJxNB",
+        "slide_iiFR4c"
       ],
-      "name": "BERGNZ Slider",
+      "name": "WEBLEGKO TOP SLIDER",
       "settings": {}
     },
-    "faq_BHiqfe": {
-      "type": "faq",
+    "weblegko_faq_7AcLxC": {
+      "type": "weblegko-faq",
       "blocks": {
-        "question_XdLrDy": {
+        "question_EGyEaN": {
           "type": "question",
           "settings": {
             "question": "Love what I have from you of Dr. Berg",
-            "answer": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>"
+            "answer": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…<br/><br/></p>"
           }
         },
-        "question_QkGAMT": {
+        "question_EHQRDT": {
           "type": "question",
           "settings": {
             "question": "Love what I have from you of Dr. Berg",
-            "answer": "<p>I can only tell you that in the beginning I was interested in probiotics because I had problems with my microbiome. Then I discovered other products and I appreciate the fact that they are natural. But I follow the advice of Eric Berg and eat a big salad every day. Now…</p>"
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
           }
         },
-        "question_WXXMPm": {
+        "question_3tecBT": {
           "type": "question",
           "settings": {
             "question": "Appreciate the insights shared by Dr. Berg",
             "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
           }
         },
-        "question_YmRj6i": {
+        "question_G8k7MQ": {
           "type": "question",
           "settings": {
-            "question": "Enjoying Dr. Berg's approach to healthy living",
+            "question": "Finding value in Dr. Berg's health tips",
             "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
           }
         },
-        "question_MRrBTx": {
-          "type": "question",
-          "settings": {
-            "question": "Grateful for Dr. Berg's wellness guidance",
-            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
-          }
-        },
-        "question_TWtYdn": {
+        "question_Ay7VVU": {
           "type": "question",
           "settings": {
             "question": "Inspired by Dr. Berg's nutritional advice",
             "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
           }
         },
-        "question_CHzW9p": {
+        "question_Vq3xzV": {
           "type": "question",
           "settings": {
-            "question": "Finding value in Dr. Berg's health tips",
+            "question": "Grateful for Dr. Berg's wellness guidance",
+            "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
+          }
+        },
+        "question_FJYP9E": {
+          "type": "question",
+          "settings": {
+            "question": "Enjoying Dr. Berg's approach to healthy living",
             "answer": "<p>We accept returns within 30 days of purchase. Items must be in their original condition.</p>"
           }
         }
       },
       "block_order": [
-        "question_XdLrDy",
-        "question_QkGAMT",
-        "question_WXXMPm",
-        "question_YmRj6i",
-        "question_MRrBTx",
-        "question_TWtYdn",
-        "question_CHzW9p"
+        "question_EGyEaN",
+        "question_EHQRDT",
+        "question_3tecBT",
+        "question_G8k7MQ",
+        "question_Ay7VVU",
+        "question_Vq3xzV",
+        "question_FJYP9E"
       ],
-      "name": "BERGNZ FAQ",
+      "name": "WEBLEGKO FAQ",
       "settings": {
-        "heading": "FAQ"
+        "heading": "FAQ",
+        "rating_score": "4.8",
+        "review_count": "2,847"
+      }
+    },
+    "weblegko_about_doctor_MwQ7pT": {
+      "type": "weblegko-about-doctor",
+      "name": "WEBLEGKO ABOUT DOCTOR",
+      "settings": {
+        "heading": "More About Dr. Berg Supplements",
+        "text": "<p>Dr. Berg's supplements are formulated with the highest quality natural ingredients to support your health and wellness journey. Each product is carefully crafted based on years of research and clinical experience.</p><p>As the official UK distributor, we ensure that all products meet strict quality standards and are delivered fresh to your door. Our commitment to excellence means you can trust every supplement you purchase.<br/><br/></p>",
+        "button_label": "Show More",
+        "button_link": "contact"
       }
     }
   },
   "order": [
     "featured_collection",
-    "home_slider_b4F4AP",
-    "faq_BHiqfe"
+    "weblegko_home_slider_PbAceK",
+    "weblegko_faq_7AcLxC",
+    "weblegko_about_doctor_MwQ7pT"
   ]
 }
