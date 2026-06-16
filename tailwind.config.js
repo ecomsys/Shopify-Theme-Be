@@ -11,6 +11,7 @@ export default {
   ],
   theme: {
     screens: {
+      xs: "576px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
@@ -21,9 +22,10 @@ export default {
       colors: {
         white: "#fff",
         golden: "#ffc356",
+        goldendark: "#fdb734",
         goluboy: "#00b5d1",
         goluboydark: "#0091A8",
-        seriy:"#F7F3EB",
+        seriy: "#F7F3EB",
         // Grayscale (используется для gray-* классов)
         grayscale: {
           25: "#f8f9f9",

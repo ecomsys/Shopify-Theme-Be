@@ -39,27 +39,27 @@
               >
               <button
                 type="submit"
-                class="tw:pt-0.5 tw:bg-goluboy tw:text-white tw:px-6 tw:h-[3.6rem] tw:rounded-full tw:text-[1.4rem] tw:leading-[1.43] tw:tracking-[-0.04em] tw:font-medium tw:hover:bg-goluboy/80 tw:transition-colors tw:flex-shrink-0"
+                class="tw:pt-0.5 tw:bg-goluboy tw:text-white tw:px-6 tw:h-[3.6rem] tw:rounded-full tw:text-[1.4rem] tw:leading-[1.43] tw:tracking-[-0.04em] tw:font-medium tw:hover:bg-goluboydark tw:transition-colors tw:flex-shrink-0"
                 name="commit"
                 id="Subscribe"
               >
-                Subscribe
+                <span>Subscribe</span>
               </button>
             </div>
 
             <!-- Чекбокс согласия -->
-            <label class="cb tw:flex tw:items-center tw:gap-[0.8rem] tw:text-[1.4rem] tw:leading-[1.43] tw:tracking-[-0.04em] tw:text-grayscale-950">              
+            <label class="cb tw:flex tw:items-center tw:gap-[0.8rem] tw:text-[1.4rem] tw:leading-[1.43] tw:tracking-[-0.04em] tw:text-grayscale-950">
               <input
                 type="checkbox"
                 required
                 name="subscribe-check"
                 class="cb-input"
-              >              
+              >
               <span class="cb-box tw:bg-white tw:shrink-0 tw:w-[1.8rem] tw:h-[1.8rem] tw:border-2 tw:border-slate-200 tw:rounded-[0.4rem] tw:flex tw:items-center tw:justify-center tw:transition ">
                 <svg class="cb-icon tw:w-[1.8rem] tw:h-[1.8rem] tw:scale-150 tw:translate-x-1/6 tw:-translate-y-1/5 ">
                   <use href="#check"></use>
                 </svg>
-              </span>              
+              </span>
               <span> I agree to the terms and conditions </span>
             </label>
 
@@ -136,13 +136,17 @@
                     rel="noopener"
                     aria-label="Instagram"
                   >
-                    <svg
-                      class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]"
-                      focusable="false"
-                      aria-hidden="true"
-                    >
-                      <use href="#instagram"></use>
-                    </svg>
+                    <!-- Иконка Instagram -->
+                    <div class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]">
+                      <img
+                        src="{{ 'instagram.webp' | asset_url }}"
+                        alt="Instagram"
+                        class="tw:w-full tw:h-full tw:object-cover"
+                        loading="lazy"
+                        width="60"
+                        height="60"
+                      >
+                    </div>
                   </a>
                 {%- endif -%}
                 <a

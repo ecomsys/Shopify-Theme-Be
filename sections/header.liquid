@@ -24,7 +24,11 @@
           {{
             settings.logo
             | image_url: width: 300
-            | image_tag: class: 'h-[inherit] tw:w-auto object-cover', heights: '40, 50', width: settings.logo_width, alt: logo_alt
+            | image_tag:
+              class: 'h-[inherit] tw:w-auto object-cover',
+              heights: '40, 50',
+              width: settings.logo_width,
+              alt: logo_alt
           }}
         {%- else -%}
           <span class="tw:text-3xl tw:md:text-4xl tw:font-bold tw:tracking-tight">{{ shop.name }}</span>
@@ -37,8 +41,10 @@
           {%- for link in section.settings.menu.links -%}
             <a
               href="{{ link.url }}"
-              class="tw:text-[1.4rem] tw:tracking-[-0.04em] tw:leading-[1.43] tw:text-center tw:text-grayscale-950 tw:hover:opacity-80 tw:transition-opacity 
-              {% if link.active %}tw:opacity-100 tw:underline{% endif %}"
+              class="
+                tw:text-[1.4rem] tw:tracking-[-0.04em] tw:leading-[1.43] tw:text-center tw:text-grayscale-950 tw:hover:opacity-80 tw:transition-opacity
+                {% if link.active %}tw:opacity-100 tw:underline{% endif %}
+              "
             >
               {{ link.title }}
             </a>
@@ -56,19 +62,27 @@
         {%- if settings.social_instagram_link != blank -%}
           <a
             href="{{ settings.social_instagram_link }}"
-            class="tw:opacity-70 tw:hover:opacity-100 tw:transition-opacity"
+            class="tw:opacity-85 tw:hover:opacity-100 tw:transition-opacity"
             target="_blank"
             rel="noopener"
             aria-label="Instagram"
           >
-            <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
-              <use href="#instagram"></use>
-            </svg>
+            <!-- Иконка Instagram -->
+            <div class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]">
+              <img
+                src="{{ 'instagram.webp' | asset_url }}"
+                alt="Instagram"
+                class="tw:w-full tw:h-full tw:object-cover"
+                loading="lazy"
+                width="60"
+                height="60"
+              >
+            </div>
           </a>
         {%- endif -%}
         <a
           href="https://telegram.org"
-          class="tw:opacity-70 tw:hover:opacity-100 tw:transition-opacity"
+          class="tw:opacity-85 tw:hover:opacity-100 tw:transition-opacity"
           target="_blank"
           rel="noopener"
           aria-label="Telegram"
@@ -80,7 +94,7 @@
         {%- if settings.social_facebook_link != blank -%}
           <a
             href="{{ settings.social_facebook_link }}"
-            class="tw:opacity-70 tw:hover:opacity-100 tw:transition-opacity"
+            class="tw:opacity-85 tw:hover:opacity-100 tw:transition-opacity"
             target="_blank"
             rel="noopener"
             aria-label="Facebook"
@@ -119,17 +133,17 @@
           </a>
         {%- endif -%}
 
-        <!-- КОРЗИНА -->
+        <!-- КОРЗИНА -->        
         <a
           href="{{ routes.cart_url }}"
-          class="tw:relative tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
+          class="tw:block tw:relative tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity tw:w-fit"
           id="cart-icon-bubble"
         >
           <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
             <use href="#cart"></use>
           </svg>
           {%- if cart.item_count > 0 -%}
-            <div class="cart-count-bubble tw:absolute tw:-top-1 tw:-right-1 tw:flex tw:items-center tw:justify-center tw:min-w-[1.6rem] tw:h-[1.6rem] tw:rounded-full tw:bg-red-500 tw:text-white tw:text-[1.2rem] tw:font-bold">
+            <div class="tw:aspect-square tw:absolute tw:top-0 tw:right-0 tw:translate-x-1/2 tw:-translate-y-1/2 tw:flex tw:items-center tw:justify-center tw:min-w-[1.8rem] tw:h-[1.8rem] tw:rounded-full tw:bg-goluboy tw:text-white tw:text-[1.2rem] tw:font-bold tw:leading-none tw:px-[0.3rem]">
               <span aria-hidden="true">{{ cart.item_count }}</span>
             </div>
           {%- endif -%}

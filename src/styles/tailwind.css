@@ -6,6 +6,7 @@
 html {
   scrollbar-gutter: stable;
    overflow-y: scroll; 
+   overflow-x: hidden;
 }
 
 /* добавляем цвет тексту и шрифт глобально для сайта */
@@ -48,6 +49,11 @@ custom checkbox
 
 /* optional: бордер можно тоже менять */
 .cb-input:checked + .cb-box {
-  /* border-color: #4f46e5;  */
+  background: #ffc356;
+}
+
+
+.a{
+  color:#fdb734;
 }
 
