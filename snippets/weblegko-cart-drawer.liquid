@@ -56,7 +56,7 @@
         >
           {{ 'general.cart.view' | t: count: cart.item_count }}
         </a>
-        
+
         <!-- Кнопка "Checkout" -->
         <form action="{{ routes.cart_url }}" method="post" id="cart-drawer-checkout-form">
           <button
@@ -98,10 +98,12 @@
 
 <!-- snippets/weblegko-cart-drawer-script.liquid -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    
-    // ----- Функция обновления счётчика корзины -----
-    window.updateCartCounter = function () {
+  // Создаём глобальный объект для функций корзины
+  window.WeblegkoCart = window.WeblegkoCart || {};
+
+  (function () {
+    // ----- Функция обновления счётчика -----
+    WeblegkoCart.updateCartCounter = function () {
       fetch('/cart.js')
         .then((res) => res.json())
         .then((cart) => {
@@ -115,8 +117,8 @@
         .catch((err) => console.warn('Не удалось обновить счётчик:', err));
     };
 
-    // ----- Функция загрузки содержимого корзины в дровер -----
-    window.loadCartDrawerContent = function () {
+    // ----- Загрузка содержимого корзины в дровер -----
+    WeblegkoCart.loadCartDrawerContent = function () {
       fetch('/cart.js')
         .then((response) => response.json())
         .then((cart) => {
@@ -160,19 +162,14 @@
             totalEl.textContent = `$${totalPrice}`;
           }
           if (viewCartButton) {
-            // Можно взять текст из локализации, но проще задать вручную
-            // Если у вас английский – используйте "View cart (N)"
-            // Если русский – "Перейти в корзину (N)"
             viewCartButton.textContent = `View cart (${cart.item_count})`;
-            // Если хотите использовать стандартную локализацию, то нужно будет передать шаблон через data-атрибут,
-            // но для простоты оставим так.
           }
         })
         .catch((err) => console.warn('Ошибка загрузки корзины:', err));
     };
 
-    // ----- Лоадер (показать/скрыть) -----
-    window.showLoader = function () {
+    // ----- Лоадер -----
+    WeblegkoCart.showLoader = function () {
       const loader = document.getElementById('global-loader');
       if (loader) {
         loader.classList.remove('tw:opacity-0', 'tw:invisible');
@@ -180,7 +177,7 @@
       }
     };
 
-    window.hideLoader = function () {
+    WeblegkoCart.hideLoader = function () {
       const loader = document.getElementById('global-loader');
       if (loader) {
         loader.classList.add('tw:opacity-0', 'tw:invisible');
@@ -188,8 +185,8 @@
       }
     };
 
-    // ----- Функция открытия дровера -----
-    window.openCartDrawer = function () {
+    // ----- Открытие / закрытие дровера -----
+    WeblegkoCart.openCartDrawer = function () {
       const overlay = document.querySelector('#cart-drawer-overlay');
       const drawer = document.querySelector('#cart-drawer');
       if (!overlay || !drawer) return;
@@ -199,20 +196,17 @@
       drawer.classList.remove('tw:translate-x-full');
       drawer.classList.add('tw:translate-x-0');
 
-      // Блокируем скролл везде
+      // Блокируем скролл
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
-      // Для некоторых мобильных браузеров
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
-      document.body.style.top = `-${window.scrollY}px`; // сохраняем позицию
+      document.body.style.top = `-${window.scrollY}px`;
 
-      // Загружаем содержимое
-      window.loadCartDrawerContent();
+      WeblegkoCart.loadCartDrawerContent();
     };
 
-    // ----- Функция закрытия дровера -----
-    window.closeCartDrawer = function () {
+    WeblegkoCart.closeCartDrawer = function () {
       const overlay = document.querySelector('#cart-drawer-overlay');
       const drawer = document.querySelector('#cart-drawer');
       if (!overlay || !drawer) return;
@@ -231,30 +225,98 @@
       window.scrollTo(0, parseInt(document.body.style.top || '0') * -1);
     };
 
-    // ----- Привязываем события к элементам (на всех страницах) -----
-    // Открытие по клику на иконку корзины
-    const cartIcon = document.querySelector('#cart-icon-bubble');
-    if (cartIcon) {
-      cartIcon.addEventListener('click', function (event) {
-        event.preventDefault();
-        window.openCartDrawer();
-      });
+    // --- ЗАГЛУШКА ДЛЯ QUICK-ADD ---
+    // Создаём скрытый cart-notification, если его нет
+    let notif = document.querySelector('cart-notification');
+    if (!notif) {
+      notif = document.createElement('cart-notification');
+      notif.style.display = 'none';
+      document.body.appendChild(notif);
+    }
+    // Добавляем недостающий метод
+    if (notif && typeof notif.setActiveElement !== 'function') {
+      notif.setActiveElement = function() {
+        // пустая функция-заглушка
+      };
+    }
+    // --- КОНЕЦ ЗАГЛУШКИ ---
+
+    // Отключаем скрипт на страницах /cart и /checkout
+    const path = window.location.pathname;
+    if (path === '/cart' || path === '/checkout' || path.startsWith('/checkout/')) {
+      return;
     }
 
-    // Закрытие по крестику и оверлею
-    const closeBtn = document.querySelector('#cart-drawer-close');
-    const overlay = document.querySelector('#cart-drawer-overlay');
-    if (closeBtn) closeBtn.addEventListener('click', window.closeCartDrawer);
-    if (overlay) overlay.addEventListener('click', window.closeCartDrawer);
+    // ----- Инициализация при загрузке DOM -----
+    document.addEventListener('DOMContentLoaded', function () {
+      // ---- Перехват всех форм добавления в корзину (capture phase) ----
+      document.addEventListener(
+        'submit',
+        function (event) {
+          const form = event.target;
+          if (form && form.action && form.action.endsWith('/cart/add')) {
+            event.preventDefault();
+            event.stopPropagation();
 
-    // Закрытие по Escape
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        window.closeCartDrawer();
+            const formData = new FormData(form);
+            const variantId = formData.get('id');
+            const quantity = formData.get('quantity') || 1;
+
+            if (!variantId) {
+              console.error('ID варианта не найден');
+              return;
+            }
+
+            WeblegkoCart.showLoader();
+
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                items: [{ id: parseInt(variantId), quantity: parseInt(quantity) }],
+              }),
+            })
+              .then((response) => {
+                if (!response.ok) throw new Error('Ошибка добавления');
+                return response.json();
+              })
+              .then((cart) => {
+                WeblegkoCart.updateCartCounter();
+                WeblegkoCart.openCartDrawer();
+              })
+              .catch((error) => {
+                console.error('Ошибка:', error);
+                alert('Не удалось добавить товар. Попробуйте позже.');
+              })
+              .finally(() => {
+                WeblegkoCart.hideLoader();
+              });
+          }
+        },
+        true
+      );
+
+      // ---- События для иконки корзины, крестика и оверлея ----
+      const cartIcon = document.querySelector('#weblegko-cart-icon-bubble');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', function (event) {
+          event.preventDefault();
+          WeblegkoCart.openCartDrawer();
+        });
       }
-    });
 
-    // Если корзина уже не пуста при загрузке, обновим счётчик (на случай, если он не обновился)
-    window.updateCartCounter();
-  });
+      const closeBtn = document.querySelector('#cart-drawer-close');
+      const overlay = document.querySelector('#cart-drawer-overlay');
+      if (closeBtn) closeBtn.addEventListener('click', WeblegkoCart.closeCartDrawer);
+      if (overlay) overlay.addEventListener('click', WeblegkoCart.closeCartDrawer);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          WeblegkoCart.closeCartDrawer();
+        }
+      });
+
+      WeblegkoCart.updateCartCounter();
+    });
+  })();
 </script>

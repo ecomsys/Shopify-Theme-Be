@@ -105,18 +105,20 @@
               </div>
             {%- else -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>
-                <button
-                  type="submit"
-                  id="checkout"
-                  class="cart__checkout-button button"
-                  name="checkout"
-                  {% if cart == empty %}
-                    disabled
-                  {% endif %}
-                  form="cart"
-                >
-                  {{ 'sections.cart.checkout' | t }}
-                </button>
+                <form action="{{ routes.cart_url }}" method="post" id="cart-page-checkout-form" class="tw:w-full">
+                  <button
+                    type="submit"
+                    id="checkout"
+                    class="cart__checkout-button button"
+                    name="checkout"
+                    {% if cart == empty %}
+                      disabled
+                    {% endif %}
+                    {% comment %} form="cart"  {% endcomment %}
+                  >
+                    {{ 'sections.cart.checkout' | t }}
+                  </button>
+                </form>
               </div>
 
               {%- if additional_checkout_buttons -%}
@@ -147,7 +149,7 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    },    
+    },
     {
       "type": "range",
       "id": "padding_top",
