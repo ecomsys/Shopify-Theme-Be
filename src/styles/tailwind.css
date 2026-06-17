@@ -16,8 +16,10 @@ body {
 
 /* делаем шапку липкой и задаем жестко белый фон  */
 .shopify-section-group-header-group {
-  position: sticky; 
+  position: fixed; 
   top: 0;
+  left: 0;
+  right: 0;  
   background: white;
 }
 

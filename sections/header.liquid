@@ -112,7 +112,7 @@
         <button
           type="button"
           id="search-toggle-btn"
-          class="tw:hidden tw:xl:block tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
+          class="tw:shrink-0 tw:hidden tw:xl:block tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
           aria-label="Поиск"
         >
           <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
@@ -124,26 +124,35 @@
         {%- if shop.customer_accounts_enabled -%}
           <a
             href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-            class="tw:text-grayscale-950 tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
+            class="tw:shrink-0 tw:text-grayscale-950 tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
             aria-label="Аккаунт"
           >
-            <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
+            <svg
+              class="tw:shrink-0 tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]"
+              focusable="false"
+              aria-hidden="true"
+            >
               <use href="#profile"></use>
             </svg>
           </a>
         {%- endif -%}
 
-        <!-- КОРЗИНА -->        
+        <!-- КОРЗИНА -->
         <a
           href="{{ routes.cart_url }}"
-          class="tw:block tw:relative tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity tw:w-fit"
+          class="tw:shrink-0 tw:relative tw:inline-flex tw:items-center tw:justify-center tw:opacity-80 hover:tw:opacity-100 tw:transition-opacity"
           id="cart-icon-bubble"
+          style="width: 2.4rem; height: 2.4rem;"
         >
-          <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
+          <svg
+            class="tw:shrink-0 tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]"
+            focusable="false"
+            aria-hidden="true"
+          >
             <use href="#cart"></use>
           </svg>
           {%- if cart.item_count > 0 -%}
-            <div class="tw:aspect-square tw:absolute tw:top-0 tw:right-0 tw:translate-x-1/2 tw:-translate-y-1/2 tw:flex tw:items-center tw:justify-center tw:min-w-[1.8rem] tw:h-[1.8rem] tw:rounded-full tw:bg-goluboy tw:text-white tw:text-[1.2rem] tw:font-bold tw:leading-none tw:px-[0.3rem]">
+            <div class="cart-count-bubble tw:!bg-goluboy tw:absolute tw:-top-[0.4rem] tw:!left-[1.5rem] tw:flex tw:items-center tw:justify-center tw:min-w-[2rem] tw:h-[2rem] tw:rounded-full tw:bg-goluboy tw:text-white tw:text-[1.2rem] tw:font-bold tw:leading-none tw:px-[0.4rem] tw:border-2 tw:border-white tw:shadow-sm">
               <span aria-hidden="true">{{ cart.item_count }}</span>
             </div>
           {%- endif -%}
@@ -155,10 +164,14 @@
         <button
           type="button"
           id="burger-toggle-btn"
-          class="tw:xl:hidden tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
+          class="tw:shrink-0 tw:xl:hidden tw:opacity-80 tw:hover:opacity-100 tw:transition-opacity"
           aria-label="Открыть меню"
         >
-          <svg class="tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]" focusable="false" aria-hidden="true">
+          <svg
+            class="tw:shrink-0 tw:w-[2.4rem] tw:h-[2.4rem] tw:xl:w-[2rem] tw:xl:h-[2rem]"
+            focusable="false"
+            aria-hidden="true"
+          >
             <use href="#burger"></use>
           </svg>
         </button>
@@ -267,6 +280,8 @@
     {%- endif -%}
   </div>
 </div>
+
+{% render 'weblegko-cart-drawer' %}
 
 <!-- ========================================== -->
 <!-- СКРИПТЫ -->

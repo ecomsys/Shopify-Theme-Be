@@ -315,12 +315,12 @@
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
-    {%- endif -%}
+   {%- endif -%}
 
     <div class="tw:bg-seriy tw:flex tw:flex-col tw:min-h-[100vh] tw:min-h-[100dvh] tw:min-w-[32rem]">
       {% sections 'header-group' %}
 
-      <main id="MainContent" class="flex-1 content-for-layout focus-none" role="main" tabindex="-1">
+      <main id="MainContent" class="tw:mt-[5.6rem] content-for-layout focus-none" role="main" tabindex="-1">
         {{ content_for_layout }}
       </main>
 
